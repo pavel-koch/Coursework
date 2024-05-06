@@ -130,4 +130,105 @@ public class Employee {
             System.out.println(arr[i].fullName);
         }
     }
+
+    public static void indexingSalary(double percent, Employee[] arr) {
+        percent /= 100;
+        for (int i = 0; i < Employee.count; i++) {
+            arr[i].salary += arr[i].salary * percent;
+        }
+
+    }
+
+    public static void searchForMinimumSalaryOfDepartment(Employee[] arr, int numDepartment) {
+        double min = 0;
+        int idEmployee = 0;
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment) {
+                min = arr[i].salary;
+                idEmployee = i;
+            }
+        }
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment && min > arr[i].salary) {
+                min = arr[i].salary;
+                idEmployee = i;
+            }
+        }
+        System.out.println("Минимальная зарплата в " + numDepartment + "  у:\n" + arr[idEmployee]);
+    }
+
+    public static void searchForMaximumSalaryOfDepartment(Employee[] arr, int numDepartment) {
+        double max = 0;
+        int idEmployee = 0;
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment) {
+                max = arr[i].salary;
+                idEmployee = i;
+            }
+        }
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment && max < arr[i].salary) {
+                max = arr[i].salary;
+                idEmployee = i;
+            }
+        }
+        System.out.println("Максимальная зарплата в " + numDepartment + " отделе у:\n" + arr[idEmployee]);
+    }
+
+    public static void calculatingAmountSalariesOfDepartment(Employee[] arr, int numDepartment) {
+        double sum = 0;
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment) {
+                sum += arr[i].salary;
+            }
+        }
+        System.out.printf("Сумма зарплат в %s отделе равна %s\n", numDepartment, sum);
+    }
+
+    public static void calculationAverageSalary(Employee[] arr, int numDepartment) {
+        double sum = 0;
+        int sumElement = 0;
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment) {
+                sum += arr[i].salary;
+                sumElement++;
+            }
+        }
+        sum = (double) sum / sumElement;
+        System.out.printf("Средняя зарплат в %s отделе равна %s\n", numDepartment, sum);
+    }
+
+    public static void indexingSalaryOfDepartment(double percent, Employee[] arr, int numDepartment) {
+        percent /= 100;
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment) {
+                arr[i].salary += arr[i].salary * percent;
+            }
+        }
+
+    }
+
+    public static void printAllEmployeeDepartment(Employee[] arr, int numDepartment) {
+        for (int i = 0; i < Employee.count; i++) {
+            if (arr[i].department == numDepartment) {
+                System.out.println("\nId: " + arr[i].id + "\nФИО: " + arr[i].fullName + "\nЗарплата: " + arr[i].salary);
+            }
+        }
+    }
+
+    public static void findingLessNumber(Employee[] arr, int nuber) {
+        for (int i = 0; i < Employee.count; i++) {
+            if (nuber > arr[i].salary) {
+                System.out.println("\nId: " + arr[i].id + "\nФИО: " + arr[i].fullName + "\nЗарплата: " + arr[i].salary);
+            }
+        }
+    }
+
+    public static void findingMoreNumber(Employee[] arr, int nuber) {
+        for (int i = 0; i < Employee.count; i++) {
+            if (nuber <= arr[i].salary) {
+                System.out.println("\nId: " + arr[i].id + "\nФИО: " + arr[i].fullName + "\nЗарплата: " + arr[i].salary);
+            }
+        }
+    }
 }
