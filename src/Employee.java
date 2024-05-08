@@ -38,7 +38,11 @@ public class Employee {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public int getDepartment() {
+        return department;
+    }
+
+    public void setSalary(double salary) {
         if (salary < 0) {
             System.out.println("Зарплата не может быть отрицательной!");
             return;
@@ -68,10 +72,12 @@ public class Employee {
             return false;
         }
         Employee e1 = (Employee) other;
-        if (fullName == null && e1.fullName == null && salary == 0 && e1.salary == 0 && department == 0 && e1.department == 0) {
+        if (fullName == null && e1.fullName == null && salary == 0 && e1.salary == 0
+                && department == 0 && e1.department == 0 && id < 0 && e1.id < 0) {
             return true;
         }
-        return fullName.equals(e1.fullName) && salary == e1.salary && department == e1.department;
+        return fullName.equals(e1.fullName) && salary == e1.salary
+                && department == e1.department && id == e1.id;
     }
 
     @Override
@@ -82,52 +88,4 @@ public class Employee {
         return ((int) (fullName.hashCode() + salary + department));
     }
 
-    public static void getListOfEmployees(Employee[] arr) {
-        for (int i = 0; i < Employee.count; i++) {
-            System.out.println(arr[i]);
-        }
-    }
-
-    public static double calculatingAmountSalaries(Employee[] arr) {
-        double sum = 0;
-        for (int i = 0; i < Employee.count; i++) {
-            sum += arr[i].salary;
-        }
-        return sum;
-    }
-
-    public static void searchForMinimumSalary(Employee[] arr) {
-        double min = arr[0].salary;
-        int idEmployee = 0;
-        for (int i = 0; i < Employee.count; i++) {
-            if (min > arr[i].salary) {
-                min = arr[i].salary;
-                idEmployee = i;
-            }
-        }
-        System.out.println("Минимальная зарплата у:\n" + arr[idEmployee]);
-    }
-
-    public static void searchForMaximumSalary(Employee[] arr) {
-        double max = arr[0].salary;
-        int idEmployee = 0;
-        for (int i = 0; i < Employee.count; i++) {
-            if (max < arr[i].salary) {
-                max = arr[i].salary;
-                idEmployee = i;
-            }
-        }
-        System.out.println("Максимальная зарплата у:\n" + arr[idEmployee]);
-    }
-
-    public static double calculationAverageSalary(Employee[] arr) {
-        double average = (double) (calculatingAmountSalaries(arr) / count);
-        return average;
-    }
-
-    public static void printFullNameEmployee(Employee[] arr) {
-        for (int i = 0; i < Employee.count; i++) {
-            System.out.println(arr[i].fullName);
-        }
-    }
 }
