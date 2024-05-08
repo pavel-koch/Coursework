@@ -76,8 +76,8 @@ public class Menu {
             Scanner scanner = new Scanner(System.in);
             int f = scanner.nextInt();
             switch (f) {
-                case 1 -> employeeBook.calculatingAmountSalaries();
-                case 2 -> employeeBook.calculationAverageSalary();
+                case 1 -> System.out.println(employeeBook.calculatingAmountSalaries());
+                case 2 -> System.out.println(employeeBook.calculationAverageSalary());
                 case 3 -> calculatingAmountSalariesDepartment(employeeBook);
                 case 4 -> calculationAverageSalaryDepartment(employeeBook);
                 case 5 -> indexingSalary(employeeBook);
@@ -100,18 +100,20 @@ public class Menu {
             System.out.println("3 - Найти сотрудника с максимальной ЗП");
             System.out.println("4 - Найти сотрудника с минимальной ЗП по отделу");
             System.out.println("5 - Найти сотрудника с максимальной ЗП по отделу");
-            System.out.println("5 - Найти сотрудника с ЗП меньше чем ХХХХ");
-            System.out.println("5 - Найти сотрудника с ЗП больше чем ХХХХ");
+            System.out.println("6 - Найти сотрудника с ЗП меньше чем ХХХХ");
+            System.out.println("7 - Найти сотрудника с ЗП больше чем ХХХХ");
             System.out.println("0 - Вернуться в предыдущее меню");
 
             Scanner scanner = new Scanner(System.in);
             int s = scanner.nextInt();
             switch (s) {
                 case 1 -> searchEmployeesById(employeeBook);
-//                case 1 ->
-//                case 1 ->
-//                case 1 ->
-//                case 1 ->
+                case 2 -> employeeBook.searchForMinimumSalary();
+                case 3 -> employeeBook.searchForMaximumSalary();
+                case 4 -> searchForMinimumSalaryOfDepartment(employeeBook);
+                case 5 -> searchForMaximumSalaryOfDepartment(employeeBook);
+                case 6 -> findingLessNumber(employeeBook);
+                case 7 -> findingMoreNumber(employeeBook);
                 case 0 -> {
                     return;
                 }
@@ -188,11 +190,39 @@ public class Menu {
         employeeBook.indexingSalaryOfDepartment(percent, numDepartment);
     }
 
-    public static void searchEmployeesById (EmployeeBook employeeBook) {
+    public static void searchEmployeesById(EmployeeBook employeeBook) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите Id сотрудника: ");
         int id = scanner.nextInt();
         System.out.println(employeeBook.getEmployeeById(id));
+    }
+
+    public static void searchForMinimumSalaryOfDepartment(EmployeeBook employeeBook) {
+        System.out.println("Выберите отдел (1-5): ");
+        Scanner scanner = new Scanner(System.in);
+        int numDepartment = scanner.nextInt();
+        employeeBook.searchForMinimumSalaryOfDepartment(numDepartment);
+    }
+
+    public static void searchForMaximumSalaryOfDepartment(EmployeeBook employeeBook) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Выберите отдел (1-5): ");
+        int numDepartment = scanner.nextInt();
+        employeeBook.searchForMinimumSalaryOfDepartment(numDepartment);
+    }
+
+    public static void findingLessNumber(EmployeeBook employeeBook) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите верхний уровень ЗП: ");
+        int number = scanner.nextInt();
+        employeeBook.findingLessNumber(number);
+    }
+
+    public static void findingMoreNumber(EmployeeBook employeeBook) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите нижний уровень ЗП: ");
+        int number = scanner.nextInt();
+        employeeBook.findingMoreNumber(number);
     }
 
 }
