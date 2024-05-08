@@ -6,7 +6,7 @@ public class EmployeeBook {
         this.employees = new Employee[10];
     }
 
-    public Employee getEmployee(int id) {
+    public Employee getEmployeeById(int id) {
         for (int i = 0; i < size; i++) {
             if (employees[i].getId() == id) {
                 return employees[i];
@@ -132,7 +132,7 @@ public class EmployeeBook {
 
     public void calculatingAmountSalariesOfDepartment(int numDepartment) {
         double sum = 0;
-        for (int i = 0; i < Employee.count; i++) {
+        for (int i = 0; i < size; i++) {
             if (employees[i].getDepartment() == numDepartment) {
                 sum += employees[i].getSalary();
             }
@@ -175,7 +175,7 @@ public class EmployeeBook {
     }
 
     public void findingLessNumber(int number) {
-        for (int i = 0; i < Employee.count; i++) {
+        for (int i = 0; i < size; i++) {
             if (number > employees[i].getSalary()) {
                 System.out.println("\nId: " + employees[i].getId() + "\nФИО: " + employees[i].getFullName()
                         + "\nЗарплата: " + employees[i].getSalary());
