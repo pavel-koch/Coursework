@@ -16,5 +16,15 @@ public class Main {
         double b = Employee.calculationAverageSalary(emp);
         System.out.println(b);
         Employee.printFullNameEmployee(emp);
+        Employee.indexingSalary(15, emp);
+        Employee.getListOfEmployees(emp);
+        System.out.println("------------------");
+        Employee.searchForMaximumSalaryOfDepartment(emp, 5);
+        System.out.println("------------------");
+        Employee.printAllEmployeeDepartment(emp, 4);
+        System.out.println("------------------");
+        Employee.findingLessNumber(emp, 100000);
+        System.out.println("------------------");
+        Employee.findingMoreNumber(emp, 100000);
     }
 }
