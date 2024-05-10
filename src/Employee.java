@@ -8,18 +8,9 @@ public class Employee {
 
     public Employee(String fullName, double salary, int department) {
         this.fullName = fullName;
-        if (salary > 0) {
-            this.salary = salary;
-        } else {
-            this.salary = 100500;
-        }
-        if (department >= 1 && department <= 5) {
-            this.department = department;
-        } else {
-            this.department = 1 + (int) (Math.random() * 5);
-        }
-        this.id = count;
-        count++;
+        this.salary = salary;
+        this.department = department;
+        this.id = count++;
     }
 
     public static int getCount() {
@@ -68,14 +59,10 @@ public class Employee {
         if (other == this) {
             return true;
         }
-        if (this.getClass() != other.getClass()) {
+        if (other == null || this.getClass() != other.getClass()) {
             return false;
         }
         Employee e1 = (Employee) other;
-        if (fullName == null && e1.fullName == null && salary == 0 && e1.salary == 0
-                && department == 0 && e1.department == 0 && id < 0 && e1.id < 0) {
-            return true;
-        }
         return fullName.equals(e1.fullName) && salary == e1.salary
                 && department == e1.department && id == e1.id;
     }

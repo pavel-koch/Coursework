@@ -35,7 +35,7 @@ public class EmployeeBook {
         }
     }
 
-    public void getListOfEmployees() {
+    public void printListOfEmployees() {
         for (int i = 0; i < size; i++) {
             System.out.println(employees[i]);
         }
@@ -50,11 +50,9 @@ public class EmployeeBook {
     }
 
     public void searchForMinimumSalary() {
-        double min = employees[0].getSalary();
         int idEmployee = 0;
-        for (int i = 0; i < Employee.count; i++) {
-            if (min > employees[i].getSalary()) {
-                min = employees[i].getSalary();
+        for (int i = 0; i < size; i++) {
+            if (employees[idEmployee].getSalary() > employees[i].getSalary()) {
                 idEmployee = i;
             }
         }
@@ -62,11 +60,9 @@ public class EmployeeBook {
     }
 
     public void searchForMaximumSalary() {
-        double max = employees[0].getSalary();
         int idEmployee = 0;
-        for (int i = 0; i < Employee.count; i++) {
-            if (max < employees[i].getSalary()) {
-                max = employees[i].getSalary();
+        for (int i = 0; i < size; i++) {
+            if (employees[idEmployee].getSalary() < employees[i].getSalary()) {
                 idEmployee = i;
             }
         }
@@ -74,8 +70,7 @@ public class EmployeeBook {
     }
 
     public double calculationAverageSalary() {
-        double average = (double) (calculatingAmountSalaries() / size);
-        return average;
+        return calculatingAmountSalaries() / size;
     }
 
     public void printFullNameEmployee() {
@@ -86,7 +81,7 @@ public class EmployeeBook {
 
     public void indexingSalary(double percent) {
         percent /= 100;
-        double newSalary = 0;
+        double newSalary;
         for (int i = 0; i < size; i++) {
             newSalary = employees[i].getSalary() + employees[i].getSalary() * percent;
             employees[i].setSalary(newSalary);
@@ -95,17 +90,16 @@ public class EmployeeBook {
     }
 
     public void searchForMinimumSalaryOfDepartment(int numDepartment) {
-        double min = 0;
         int idEmployee = 0;
         for (int i = 0; i < size; i++) {
             if (employees[i].getDepartment() == numDepartment) {
-                min = employees[i].getSalary();
                 idEmployee = i;
+                break;
             }
         }
         for (int i = 0; i < size; i++) {
-            if (employees[i].getDepartment() == numDepartment && min > employees[i].getSalary()) {
-                min = employees[i].getSalary();
+            if (employees[i].getDepartment() == numDepartment &&
+                    employees[idEmployee].getSalary() > employees[i].getSalary()) {
                 idEmployee = i;
             }
         }
@@ -174,7 +168,7 @@ public class EmployeeBook {
         }
     }
 
-    public void findingLessNumber(int number) {
+    public void printEmployeesWithLessSalaries(int number) {
         for (int i = 0; i < size; i++) {
             if (number > employees[i].getSalary()) {
                 System.out.println("\nId: " + employees[i].getId() + "\nФИО: " + employees[i].getFullName()
@@ -183,7 +177,7 @@ public class EmployeeBook {
         }
     }
 
-    public void findingMoreNumber(int number) {
+    public void printEmployeesWithHigherSalaries(int number) {
         for (int i = 0; i < size; i++) {
             if (number <= employees[i].getSalary()) {
                 System.out.println("\nId: " + employees[i].getId() + "\nФИО: " + employees[i].getFullName()
