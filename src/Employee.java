@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Employee {
     private final String fullName;
     private double salary;
@@ -67,12 +69,9 @@ public class Employee {
                 && department == e1.department && id == e1.id;
     }
 
+
     @Override
     public int hashCode() {
-        if (fullName == null || salary == 0 || department == 0) {
-            return 0;
-        }
-        return ((int) (fullName.hashCode() + salary + department));
+        return Objects.hash(fullName, salary, department, id);
     }
-
 }
